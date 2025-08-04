@@ -1,6 +1,6 @@
 # Projeto Spring Boot - API REST
 
-Este é um projeto de exemplo utilizando **Spring Boot** com **Maven** para gerenciamento de dependências. A aplicação expõe uma API RESTful e utiliza o **Swagger** para documentação interativa.
+Este é um projeto de exemplo utilizando **Spring Boot** com **Maven** para gerenciamento de um estacionamento. A aplicação expõe uma API RESTful e utiliza o **Swagger** para documentação interativa.
 
 ## Requisitos
 
@@ -54,7 +54,7 @@ Por meio dessa interface, é possível visualizar e testar os endpoints da API.
 src/
  └── main/
      ├── java/
-     │   └── com.seuprojeto/  # Pacotes com controllers, services, models etc.
+     │   └── com.example.parking/  # Pacotes com controllers, services, models etc.
      └── resources/
          ├── application.properties
          └── ...
