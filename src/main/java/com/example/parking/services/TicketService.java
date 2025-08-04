@@ -38,20 +38,23 @@ public class TicketService {
         VehicleType vehicleType = this.vehicleTypeRepository.findById(requestTicktDTO.getVehicle_type_id()).orElseThrow(() -> new RuntimeException("Tipo não encontado"));
 
 
-        if(spot.isOccuppied()) {
-           throw new  RuntimeException("Vaga não disponível");
-        }
-
-        if(!Objects.equals(spot.getVehicle().getVehicle(), vehicleType.getVehicle())) {
-            throw new RuntimeException("Essa vaga não condiz");
-        }
+//        if(spot.isOccuppied()) {
+//           throw new  RuntimeException("Vaga não disponível");
+//        }
+//
+//        if(!Objects.equals(spot.getVehicle().getVehicle(), vehicleType.getVehicle())) {
+//            throw new RuntimeException("Essa vaga não condiz");
+//        }
 
         Ticket tick = new Ticket(requestTicktDTO, spot, vehicleType);
 
         Ticket savedTickt = this.ticketRepository.save(tick);
+        Spot test = savedTickt.getSpot();
+        System.out.println(test);
         spot.setOccuppied(true);
         spotRepository.save(spot);
 
+        System.out.println(savedTickt);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseTicketDTO(savedTickt));
 
     }
@@ -75,6 +78,7 @@ public class TicketService {
 
         float pricePerMinute = 0.75f;
         float amount = seconds * pricePerMinute;
+
 
         ticket.setAmount(amount);
         ticket.setExit_time(now);
